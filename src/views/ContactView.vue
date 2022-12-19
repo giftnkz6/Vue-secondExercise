@@ -17,12 +17,17 @@
     form {
         display: grid;
         grid-template-columns: 1fr;
-        width: 280px;
+        width: 560px;
+        height: 290px;
         margin: auto;
+        background-color: black;
+        border-radius: 15px;
+        margin-top: 7rem;
     }
     form input{
         width: 280px;
         margin-top: 1rem;
+        margin: auto;
     }
     button{
         width: 80px;

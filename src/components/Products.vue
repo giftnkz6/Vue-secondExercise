@@ -1,27 +1,27 @@
 <template>  
-    <h1>Products</h1>
-    <div v-for="product in products" :key="product">
-        <div class="card">
-            <div class="img">
-                <img :src="product.image">
+    <div class="container">
+        <h1 class="mb-5">Products</h1>
+        <div v-if="products.length" class="products-container">
+            <div v-for="item in products" :key="item">
+                <div class="card" style="width: 18rem;">
+                    <img :src="item.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text">R {{ item.price}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="heading">
-                <h1>{{product.name}}</h1>
-            </div>
-            <div class="description">
-                <p>{{product.description}}</p>
-            </div>
-            <div class="price">
-                <p>R {{product.price}}</p>
-            </div>
-            <div>
-                <button>Purchase</button>
-            </div>
+    
+        </div>
+        <div v-else>
+            <SpinnerComponent/>
         </div>
     </div>
 </template>
 
 <script>
+    import SpinnerComponent from './Spinner.vue';
     export default{
         name: "ProductsPage",
         data(){
@@ -56,29 +56,35 @@
                     image:"https://media.istockphoto.com/id/469742184/photo/ndebele-smile.jpg?s=612x612&w=0&k=20&c=bIFrLyiMlggoJE58XKhHvAYeXgvtOiV6hm8q52cd1HQ="
     
                 },
+               
             ]
             }
+        },
+        components:{
+            SpinnerComponent
         }
     }
 </script>
 <style scoped>
+
+.products-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
 .card{
-    width: 400px;
-    border: 20px black solid;
-    margin: 4rem 0;
-    margin: auto;
+    width: 350px;
+    height: 450px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.361);
 }
 img{
-
-width: 25rem;
+    height: 250px;
 }
 
-button{
-    width: 7rem;
-    height: 3rem;
-    border-radius: 5%;
-    background-color: yellow;
-    color: red;
+
+.card-img-top {
+    object-fit: cover;
 }
 
 </style>
